@@ -3,12 +3,32 @@
 using namespace std;
 
 void graph(int arr[100][100], int vertex, int edge){
-	int a, i, j, from, to, weight;
+	int a, i, j, from, to, weight, hehe;
 	vector < pair <int, int > > v[vertex];
 	for(i=0; i<edge; i++){
-		scanf("%d%d%d", &from, &to, &weight); //input dari mana kemana sama weightnya
-		arr[from-1][to-1]=weight;
-		v[from].push_back(make_pair(to, weight)); //karena array dimulai dari 0 makanya -1
+		hehe=i;
+		printf("Edge %d: \n", hehe+1);
+		printf("Nama Vertex asal: ");
+		scanf("%d", &from);
+		printf("Nama Vertex tujuan: ");
+		scanf("%d", &to);
+		printf("Weight Edge nya: ");
+		scanf("%d", &weight);
+		//scanf("%d%d%d", &from, &to, &weight); //input dari mana kemana sama weightnya
+		if(from>vertex || to>vertex || from<1 || to<1)
+		{
+			printf("Input errorr \n");
+			i--;
+		}
+		else
+		{
+			arr[from-1][to-1]=weight;
+		}
+		
+		
+		//v[from].push_back(make_pair(to, weight)); //karena array dimulai dari 0 makanya -1
+
+	}
 }
 
 
@@ -93,30 +113,52 @@ void dijkstra (int arr[100][100], int vertex, int edge){ //fungsi dijkstranya
 }
 
 int main(){
-	int vertex, edge, i, j, from, to, weight, a;
-	printf("Masukkan jumlah vertex: ");
-	scanf("%d", &vertex);
-	if (vertex<2){
-        printf("Input error\n");
-        return 0;
+	int vertex, edge, i, j, from, to, weight, a, start;
+	printf("Welcome!\n");
+	printf("1. Mulai\n2. Keluar\n");
+	while(1){
+		scanf("%d",&start);
+		if (start==2) return 0;
+		else if (start==1) break;
+		else printf("Input error\n");
 	}
-	printf("Masukkan jumlah edge: ");
-	scanf("%d", &edge);
-	if (edge==0){
-        printf("Input error\n");
-        return 0;
+	
+	while(1)
+	{
+		printf("Masukkan jumlah vertex (Jumlah vertex harus lebih dari 1):\n");
+		scanf("%d", &vertex);
+		if (vertex<2)
+		{
+			printf("Jumlah vertex anda tidak valid\n");
+		}
+		else
+		{
+			break;
+		}
 	}
-	else if (vertex>1&&edge==0){
-        printf("Input error\n");
-        return 0;
+	
+	while(1)
+	{
+		printf("Masukkan jumlah edge (Jumlah Edge harus lebih dari 0):\n");
+		scanf("%d", &edge);	
+		if(edge<1)
+		{
+			printf("Jumlah edge anda tidak valid \n");
+		}
+		else
+		{
+			break;
+		}
 	}
+	
 	int arr[100][100];
-	printf("Masukkan jarak antar vertex dengan format \"dari\" \"ke\" dan \"weight\" !\n");
+	printf("Vertex diberi nama 1 sampai jumlah vertexnya \n");
+	//printf("Masukkan jarak antar vertex dengan format \"dari\" \"ke\" dan \"weight\" !\n");
 	for(i=0; i<vertex; i++){
 		for(j=0; j<vertex; j++){
 			arr[i][j]=0;
 		}
 	}
-	Adjacency(arr, vertex, edge);
+	graph(arr, vertex, edge);
 	dijkstra(arr, vertex, edge);
 }
