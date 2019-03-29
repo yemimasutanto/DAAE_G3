@@ -82,7 +82,7 @@ void dijkstra (int arr[100][100], int vertex, int edge){ //fungsi dijkstranya
 	}
 	printf("Maka hasilnya\n");
 	if (hasil[akhir-1]==MAX){
-			printf("Dari titik %d ke titik %d tidak mempunyai jarak \n", pilih, i+1);
+			printf("Dari titik %d ke titik %d tidak mempunyai jarak \n", pilih, akhir);
 		}
 	else{
 		printf("Dari titik %d ke titik %d jarak terdekatnya adalah %d \n", pilih, akhir, hasil[akhir-1]);
