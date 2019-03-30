@@ -1,5 +1,5 @@
 # DAAE_Q2_G3
-Quiz 2 DAA E - Dijkstra Implementation :)
+Quiz 2 DAA E - Dijkstra Implementation - Using C++
 
 Create by:
 
